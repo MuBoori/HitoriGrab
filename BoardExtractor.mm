@@ -301,21 +301,29 @@ int matrix[8][8];
     tesseract = new tesseract::TessBaseAPI();
     
     // tesseract->Init([dataPath cStringUsingEncoding:NSUTF8StringEncoding], "eng");
-    
-    tesseract->Init([dataPath cStringUsingEncoding:NSUTF8StringEncoding], "eng", tesseract::OEM_DEFAULT,NULL, 0, NULL, NULL, false);
+    tesseract->SetVariable("tessedit_char_whitelist", "123456789");
+    tesseract->Init([dataPath cStringUsingEncoding:NSUTF8StringEncoding], "eng", tesseract::OEM_TESSERACT_ONLY, NULL, 0, NULL, NULL, false);
+
 
     tesseract->SetVariable("tessedit_char_whitelist", "123456789");
     
     
     
-    cv::GaussianBlur(imageFromMat, imageFromMat, cv::Size(9,9), 0);
+    cv::medianBlur(imageFromMat, imageFromMat, 11);
+    cv::GaussianBlur(imageFromMat, imageFromMat, cv::Size(11,11), 0);
+
     //cv::medianBlur(imageFromMat, imageFromMat, 13);
-    adaptiveThreshold(imageFromMat, imageFromMat, 255, ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, 263, 2);
+    adaptiveThreshold(imageFromMat, imageFromMat, 255, ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, 293, 2);
     
-      bitwise_not(gridLines, gridLines);
+      
+    bitwise_not(gridLines, gridLines);
+    
     //bitwise_and(undistortedThreshed, newHu, newHu);
     
     bitwise_and(imageFromMat, gridLines, imageFromMat);
+        
+    bitwise_not(imageFromMat, imageFromMat);
+    tesseract->SetPageSegMode(tesseract::PSM_SINGLE_CHAR);
     
     tesseract->SetImage((uchar*)imageFromMat.data, imageFromMat.size().width, imageFromMat.size().height, imageFromMat.channels(), imageFromMat.step1());
     tesseract->Recognize(0);
@@ -332,10 +340,15 @@ int matrix[8][8];
             
             tesseract->SetRectangle((imageFromMat.size().width/8)*j, (imageFromMat.size().height/8)*i, (imageFromMat.size().width/8), (imageFromMat.size().height/8));
             tesseract->Recognize(0);
+                    
             
+                    
+                    int *conf =  tesseract->AllWordConfidences();
+                    NSLog(@"Confidence is %d", conf[0]);
             const char* outer =tesseract->GetUTF8Text();
             int nSt = (int)std::strtol(outer, &endSt, 10) ;
            
+                    
             matrix[i][j] = nSt;
             [rows addObject:[NSString stringWithUTF8String:tesseract->GetUTF8Text()]];
            // std::cout << "character is " << outer << std::endl;

@@ -61,7 +61,7 @@
                                             <action selector="SelectAPicture:" destination="GgY-Mt-Y0F" id="LLx-nN-AnM"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Back" id="TAw-RG-ocO">
+                                    <barButtonItem title="Recognise" id="TAw-RG-ocO">
                                         <connections>
                                             <action selector="convertImage:" destination="GgY-Mt-Y0F" id="P2k-6S-KQo"/>
                                         </connections>
@@ -75,16 +75,41 @@
                                 <color key="tintColor" red="0.50196081399917603" green="0.0" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="kqp-FQ-zrM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" minimumFontSize="25" id="cdj-Su-Od7">
-                                <rect key="frame" x="-22" y="9" width="364" height="403"/>
+                                <rect key="frame" x="-22" y="-11" width="364" height="403"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="FDT-n3-LGz">
+                                <rect key="frame" x="0.0" y="392" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="1" style="plain" id="gXy-ha-Gzr"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6Om-dJ-bfJ"/>
+                                    <barButtonItem title="2" style="plain" id="lRE-gH-snD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A6R-zU-Yfo"/>
+                                    <barButtonItem title="3" style="plain" id="auY-Ec-Que"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yrt-Ex-qkX"/>
+                                    <barButtonItem title="4" style="plain" id="6Xf-Vs-B2a"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hXS-gA-dyE"/>
+                                    <barButtonItem title="5" style="plain" id="7lJ-Uy-Bu5"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bc7-z8-6rL"/>
+                                    <barButtonItem title="6" style="plain" id="Cc1-nP-7Ni"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UD5-sZ-4EU"/>
+                                    <barButtonItem title="7" style="plain" id="TXy-z1-sTD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="znr-pd-Jsh"/>
+                                    <barButtonItem title="8" style="plain" id="PwR-4y-5CN"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aoI-cU-P0K"/>
+                                    <barButtonItem title="9" style="plain" id="pN6-zq-TSJ"/>
+                                </items>
+                                <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -114,7 +139,17 @@
                     <view key="view" contentMode="scaleToFill" id="moY-jf-wYm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="3cc-4K-OC3">
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Virify Answer" id="g41-5a-UyF"/>
+                                </items>
+                                <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
             </objects>

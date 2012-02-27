@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-               BuildableName = "OpenCVClient.app"
+               BuildableName = "HitioriGrab.app"
                BlueprintName = "HitioriGrab"
                ReferencedContainer = "container:HitioriGrab.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "OpenCVClient.app"
+            BuildableName = "HitioriGrab.app"
             BlueprintName = "HitioriGrab"
             ReferencedContainer = "container:HitioriGrab.xcodeproj">
          </BuildableReference>
@@ -50,7 +50,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "OpenCVClient.app"
+            BuildableName = "HitioriGrab.app"
             BlueprintName = "HitioriGrab"
             ReferencedContainer = "container:HitioriGrab.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "OpenCVClient.app"
+            BuildableName = "HitioriGrab.app"
             BlueprintName = "HitioriGrab"
             ReferencedContainer = "container:HitioriGrab.xcodeproj">
          </BuildableReference>

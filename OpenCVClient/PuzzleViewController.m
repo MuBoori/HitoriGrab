@@ -9,6 +9,7 @@
 #import "PuzzleViewController.h"
 #import "DataAppDataObject.h"
 #import "AppDelegateProtocol.h"
+#import <QuartzCore/QuartzCore.h>
 @implementation PuzzleViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,6 +58,16 @@
     }
     
     */
+    // grid view sits on top of the background image
+    _gridView = [[AQGridView alloc] initWithFrame: self.view.bounds];
+    _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _gridView.backgroundColor = [UIColor clearColor];
+    _gridView.opaque = NO;
+    _gridView.dataSource = self;
+    _gridView.delegate = self;
+    _gridView.scrollEnabled = NO;
+    [self.view addSubview: _gridView];
+    /////
   
     NSLog(@"YESSSS");
     DataAppDataObject* theDataObject = [self theAppDataObject];
@@ -65,9 +76,28 @@
     for (int i =0; 8 > i; i++) {
         for (int j = 0 ; 8 > j; j++) {
             NSLog([[myArray objectAtIndex:i] objectAtIndex:j]);
-            UITextField *label = [[UITextField alloc] initWithFrame:CGRectMake(40*j, 60*i, 30, 30)];
-            [label setText: [[myArray objectAtIndex:i] objectAtIndex:j]];
-            label.textColor = [UIColor redColor];
+            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 45*i, 30, 30)];
+            [label setTitle:[[myArray objectAtIndex:i] objectAtIndex:j] forState:UIControlStateNormal] ;
+            [label setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            label.backgroundColor = [UIColor whiteColor];
+            
+            ////
+            CGRect rect = CGRectMake(0, 0, 1, 1);
+            UIGraphicsBeginImageContext(rect.size);
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextSetFillColorWithColor(context,
+                                           [[UIColor redColor] CGColor]);
+            //  [[UIColor colorWithRed:222./255 green:227./255 blue: 229./255 alpha:1] CGColor]) ;
+            CGContextFillRect(context, rect);
+            UIImage *colorImg = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            ///
+            [label setBackgroundImage:colorImg forState:UIControlStateSelected];
+            label.layer.borderColor =  [UIColor blackColor].CGColor;
+            label.selected = YES;
+            label.highlighted = YES;
+            //[label setText: [[myArray objectAtIndex:i] objectAtIndex:j]];
+            label.tintColor = [UIColor redColor];
             [self.view addSubview:label];
         }
     }

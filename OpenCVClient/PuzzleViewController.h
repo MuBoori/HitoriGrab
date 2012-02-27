@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PuzzleViewController : UIViewController
-
+#import "AQGridView.h"
+@interface PuzzleViewController : UIViewController <AQGridViewDataSource,AQGridViewDelegate>
+{
+ 
+    AQGridView *_gridView;
+}
 @end

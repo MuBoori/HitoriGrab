@@ -47,6 +47,7 @@
     _image = img;
     [picker dismissModalViewControllerAnimated:NO];
 
+
     _CapturedImage.image = _image;
     //[[picker parentViewController] dismissModalViewControllerAnimated:NO];
 
@@ -102,7 +103,7 @@
     for (int i =0; 8 > i; i++) {
         for (int j = 0 ; 8 > j; j++) {
             NSLog([[be.resultInArray objectAtIndex:i] objectAtIndex:j]);
-            UITextField *label = [[UITextField alloc] initWithFrame:CGRectMake(40*j, 60*i, 30, 30)];
+            UITextField *label = [[UITextField alloc] initWithFrame:CGRectMake(40*j, 50*i, 30, 30)];
             [label setText: [[be.resultInArray objectAtIndex:i] objectAtIndex:j]];
             label.keyboardType = UIKeyboardTypeNumberPad;
             label.textColor = [UIColor redColor];
