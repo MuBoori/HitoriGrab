@@ -333,6 +333,7 @@ int matrix[8][8];
     _resultInString = [ NSString stringWithUTF8String:tesseract->GetUTF8Text() ] ;
     char * endSt;
     resultInArray = [[NSMutableArray alloc] initWithCapacity:8];
+    HitoriCell *tempCell;
     //[resultInArray addObject:@"Hello"];
     for (int i = 0; i<8; i++) {
         rows = [[NSMutableArray alloc] initWithCapacity:8];
@@ -350,7 +351,13 @@ int matrix[8][8];
            
                     
             matrix[i][j] = nSt;
-            [rows addObject:[NSString stringWithUTF8String:tesseract->GetUTF8Text()]];
+            tempCell = [[HitoriCell alloc] init];
+                    tempCell.number = nSt;
+                    tempCell.NumberAsString = [NSString stringWithUTF8String:tesseract->GetUTF8Text()];
+                    tempCell.confidence = conf[0];
+                    tempCell.Status = CELL_VISABLE;
+                    tempCell.Hidden = false;
+            [rows addObject:tempCell];
            // std::cout << "character is " << outer << std::endl;
 
         }

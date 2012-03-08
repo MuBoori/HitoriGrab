@@ -17,6 +17,9 @@ UINavigationControllerDelegate, UIPopoverControllerDelegate>{
     UIImagePickerController *imgPicker;
     UIImage *image;
     UIImage * newImage;
+
+    NSMutableArray *trackButton;
+    
 }
 @property (retain, nonatomic) IBOutlet UILabel *ResultLabel;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *ConvertButton;
@@ -30,6 +33,8 @@ UINavigationControllerDelegate, UIPopoverControllerDelegate>{
 @property (retain, nonatomic) IBOutlet UIImageView *CapturedImage;
 @property (retain, nonatomic) UIImage *image;
 @property (retain, nonatomic) UIImage *newImage;
+
+- (IBAction)changeNo:(id)sender;
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 

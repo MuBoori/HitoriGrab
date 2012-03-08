@@ -75,9 +75,12 @@
     
     for (int i =0; 8 > i; i++) {
         for (int j = 0 ; 8 > j; j++) {
-            NSLog([[myArray objectAtIndex:i] objectAtIndex:j]);
+            //NSLog([[myArray objectAtIndex:i] objectAtIndex:j]);
             UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 45*i, 30, 30)];
-            [label setTitle:[[myArray objectAtIndex:i] objectAtIndex:j] forState:UIControlStateNormal] ;
+            HitoriCell *cellForGrid = (HitoriCell*)[[myArray objectAtIndex:i] objectAtIndex:j];
+            NSString *tempTitle = [NSString stringWithFormat:@"%d",cellForGrid.number];
+            NSLog(@"THis the number %d",myArray.count);
+            [label setTitle:tempTitle forState:UIControlStateNormal] ;
             [label setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             label.backgroundColor = [UIColor whiteColor];
             

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AQGridView.h"
+#import "HitoriCell.h"
 @interface PuzzleViewController : UIViewController <AQGridViewDataSource,AQGridViewDelegate>
 {
  

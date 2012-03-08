@@ -20,6 +20,7 @@
 @synthesize image = _image;
 @synthesize newImage = _newImage;
 
+
 @synthesize imgPicker = _imagePicker;
 @synthesize CapturedImage = _CapturedImage;
 
@@ -99,17 +100,43 @@
     NSLog(@"Size of the array is %d",[myArray count]);
     //NSLog([[be.resultInArray objectAtIndex:1] objectAtIndex:0]);
 
+    trackButton = [[NSMutableArray alloc] init];
     
     for (int i =0; 8 > i; i++) {
+
         for (int j = 0 ; 8 > j; j++) {
-            NSLog([[be.resultInArray objectAtIndex:i] objectAtIndex:j]);
-            UITextField *label = [[UITextField alloc] initWithFrame:CGRectMake(40*j, 50*i, 30, 30)];
-            [label setText: [[be.resultInArray objectAtIndex:i] objectAtIndex:j]];
-            label.keyboardType = UIKeyboardTypeNumberPad;
-            label.textColor = [UIColor redColor];
+            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 50*i, 30, 30)];
+            HitoriCell *tempCell = ((HitoriCell*)[[be.resultInArray objectAtIndex:i] objectAtIndex:j]);
+            NSString *tempTitle = tempCell.NumberAsString;
+            [label setTitle: tempTitle forState:UIControlStateNormal];
+            if (tempCell.confidence < 75) {
+                [label setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                label.selected = YES;
+                label.highlighted = YES;
+                /////
+                CGRect rect = CGRectMake(0, 0, 1, 1);
+                UIGraphicsBeginImageContext(rect.size);
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                CGContextSetFillColorWithColor(context,
+                                               [[UIColor blueColor] CGColor]);
+                //  [[UIColor colorWithRed:222./255 green:227./255 blue: 229./255 alpha:1] CGColor]) ;
+                CGContextFillRect(context, rect);
+                UIImage *colorImg = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                //
+                [label setBackgroundImage:colorImg forState:UIControlStateHighlighted];
+                [label setBackgroundImage:colorImg forState:UIControlStateSelected];
+                [label addTarget:self action:@selector(ButtonHighlited:) forControlEvents:UIControlStateHighlighted];
+            }else{
+           
+                [label setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }
+
             [self.view addSubview:label];
+            [trackButton addObject:label];
+
         }
-    }     
+          }     
      	
     DataAppDataObject* theDataObject = [self theAppDataObject];
     theDataObject.HitoriMatrix = be.resultInArray;
@@ -141,6 +168,8 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+
 #pragma mark - View lifecycle
 
 /*
@@ -168,6 +197,7 @@
     [self setConvertButton:nil];
     [self setResultLabel:nil];
     [self setSelectButton:nil];
+    [self setChangeNo:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -177,6 +207,32 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)changeNo:(UIBarButtonItem*)sender {
+ 
+    NSLog(@"I'm clicked %@", sender.title);
+
+    for (int i = 0; trackButton.count > i; i++) {
+        UIButton *tempButton = (UIButton*)[trackButton objectAtIndex:i];
+        if(!tempButton.highlighted){
+            [tempButton setTitle:sender.title forState:UIControlStateNormal];
+            tempButton.highlighted = true;
+        }
+    }
+
+}
+
+- (IBAction)ButtonHighlited:(UIButton*)sender 
+{
+    
+    for (int i = 0; trackButton.count > i; i++) {
+        UIButton *tempButton = (UIButton*)[trackButton objectAtIndex:i];
+        tempButton.highlighted = true;
+       
+    }
+     sender.highlighted = false;
+
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -204,6 +260,7 @@
     [ConvertButton release];
     [ResultLabel release];
     [SelectButton release];
+
     [super dealloc];
 }
 @end

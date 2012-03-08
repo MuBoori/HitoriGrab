@@ -90,23 +90,59 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <barButtonItem title="1" style="plain" id="gXy-ha-Gzr"/>
+                                    <barButtonItem title="1" style="plain" id="gXy-ha-Gzr">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="0gg-pj-xRR"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6Om-dJ-bfJ"/>
-                                    <barButtonItem title="2" style="plain" id="lRE-gH-snD"/>
+                                    <barButtonItem title="2" style="plain" id="lRE-gH-snD">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="jNB-MI-fKB"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="A6R-zU-Yfo"/>
-                                    <barButtonItem title="3" style="plain" id="auY-Ec-Que"/>
+                                    <barButtonItem title="3" style="plain" id="auY-Ec-Que">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="vGc-eV-Ayy"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yrt-Ex-qkX"/>
-                                    <barButtonItem title="4" style="plain" id="6Xf-Vs-B2a"/>
+                                    <barButtonItem title="4" style="plain" id="6Xf-Vs-B2a">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="6nR-dR-Bu5"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hXS-gA-dyE"/>
-                                    <barButtonItem title="5" style="plain" id="7lJ-Uy-Bu5"/>
+                                    <barButtonItem title="5" style="plain" id="7lJ-Uy-Bu5">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="LbO-72-Vfb"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Bc7-z8-6rL"/>
-                                    <barButtonItem title="6" style="plain" id="Cc1-nP-7Ni"/>
+                                    <barButtonItem title="6" style="plain" id="Cc1-nP-7Ni">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="ZqM-1i-0c0"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UD5-sZ-4EU"/>
-                                    <barButtonItem title="7" style="plain" id="TXy-z1-sTD"/>
+                                    <barButtonItem title="7" style="plain" id="TXy-z1-sTD">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="KDA-hK-fCR"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="znr-pd-Jsh"/>
-                                    <barButtonItem title="8" style="plain" id="PwR-4y-5CN"/>
+                                    <barButtonItem title="8" style="plain" id="PwR-4y-5CN">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="fv8-Iq-sm1"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aoI-cU-P0K"/>
-                                    <barButtonItem title="9" style="plain" id="pN6-zq-TSJ"/>
+                                    <barButtonItem title="9" style="plain" id="pN6-zq-TSJ">
+                                        <connections>
+                                            <action selector="changeNo:" destination="GgY-Mt-Y0F" id="gie-bZ-E0b"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -160,6 +196,7 @@
         <class className="PreviewViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeNo:"/>
                 <relationship kind="outlet" name="CapturedImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="ConvertButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="PreviewView" candidateClass="UIView"/>

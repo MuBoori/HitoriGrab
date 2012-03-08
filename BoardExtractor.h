@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 //#include <vector>//;
 #include "baseapi.h"
+#import "HitoriGrid.h"
 
 #include "environ.h"
 #import "pix.h"
@@ -28,6 +29,7 @@ using namespace cv;
     NSMutableArray *rows;
     NSString *resultInMatrix[8][8];
     NSMutableArray *resultInArray;
+    
     int colums;
     //int rows;
     //vector<vector<int> > matrix;
