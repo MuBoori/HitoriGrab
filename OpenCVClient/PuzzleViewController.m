@@ -11,6 +11,11 @@
 #import "AppDelegateProtocol.h"
 #import <QuartzCore/QuartzCore.h>
 @implementation PuzzleViewController
+@synthesize ToolBar;
+@synthesize itemButton;
+
+
+@synthesize PuzzleAreaView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,11 +42,32 @@
 {
 }
 */
+- (IBAction)answerToPuzzle:(id)sender {
+    for (int i =0; buttonTracker.count > i; i++) {
+        
+        for (int j = 0; buttonTracker.count > j; j++) {
+            HitoriCell *tempCell = (HitoriCell*)[[hitoriInArray objectAtIndex:i] objectAtIndex:j];
+            if (((UIButton*)[[buttonTracker objectAtIndex:i] objectAtIndex:j]).isHighlighted) {
+                tempCell.Hidden = false;
+                NSLog(@"Cell hidden at %d and %d", i, j);
+            }else{
+            
+                tempCell.Hidden = true;
+            }
+            
+        }
+   
+    }
+     NSLog(@"button Clicked");
+    HitoriRules * tempRules = [[HitoriRules alloc] init];
+    tempRules.hitoriInArray = hitoriInArray;
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+
     /*
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 200, 100)];
     label.text = @"Hello";
@@ -72,11 +98,14 @@
     NSLog(@"YESSSS");
     DataAppDataObject* theDataObject = [self theAppDataObject];
     NSMutableArray *myArray = theDataObject.HitoriMatrix;
-    
+
+    hitoriInArray = myArray;
+    buttonTracker = [[NSMutableArray alloc] init];
     for (int i =0; 8 > i; i++) {
+        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
         for (int j = 0 ; 8 > j; j++) {
             //NSLog([[myArray objectAtIndex:i] objectAtIndex:j]);
-            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 45*i, 30, 30)];
+            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 40*i, 35, 35)];
             HitoriCell *cellForGrid = (HitoriCell*)[[myArray objectAtIndex:i] objectAtIndex:j];
             NSString *tempTitle = [NSString stringWithFormat:@"%d",cellForGrid.number];
             NSLog(@"THis the number %d",myArray.count);
@@ -97,13 +126,27 @@
             ///
             [label setBackgroundImage:colorImg forState:UIControlStateSelected];
             label.layer.borderColor =  [UIColor blackColor].CGColor;
+
             label.selected = YES;
             label.highlighted = YES;
+            //[label setHighlighted:true];
             //[label setText: [[myArray objectAtIndex:i] objectAtIndex:j]];
             label.tintColor = [UIColor redColor];
-            [self.view addSubview:label];
+            [label addTarget:self action:@selector(ButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            
+            //[self.view addSubview:label];
+            [PuzzleAreaView addSubview:label];
+            [tempArray addObject:label];
+            
+            
+            
         }
+        [buttonTracker addObject:tempArray];
+       
+
     }
+    [self.view addSubview:PuzzleAreaView];
+    [self.view addSubview:ToolBar];
     [super viewDidLoad];
 }
 
@@ -115,9 +158,38 @@
 	theDataObject = (DataAppDataObject*) theDelegate.theAppDataObject;
 	return theDataObject;
 }
-
+- (IBAction)ButtonClicked:(UIButton*)sender 
+{
+    [sender setHighlighted:!sender.isHighlighted];
+    [sender setSelected:!sender.isSelected];
+    
+    //[sender setHighlighted:!sender.isHighlighted];
+    /*
+    if (sender.isHighlighted) {
+        sender.highlighted = false;
+        sender.selected = false;
+    }else{
+    
+        sender.highlighted = true;
+        sender.selected = true;
+    }
+     */
+    
+    NSLog(@"I was clicked");
+    
+    //[sender setSelected:!sender.isSelected];
+    //[sender setHighlighted:!sender.isHighlighted];
+    
+}
 - (void)viewDidUnload
 {
+
+    
+    [self setPuzzleAreaView:nil];
+    [self setAnswerButton:nil];
+    [self setAnswerButton:nil];
+    [self setItemButton:nil];
+    [self setToolBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -129,4 +201,41 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [PuzzleAreaView release];
+
+    [itemButton release];
+    [ToolBar release];
+    [super dealloc];
+}
+
+
+- (IBAction)IsThatCorrect:(id)sender {
+    for (int i =0; buttonTracker.count > i; i++) {
+        NSLog(@"button Clicked");
+        for (int j = 0; buttonTracker.count > j; j++) {
+            HitoriCell *tempCell = (HitoriCell*)[[hitoriInArray objectAtIndex:i] objectAtIndex:j];
+            if (!((UIButton*)[[buttonTracker objectAtIndex:i] objectAtIndex:j]).isHighlighted) {
+                tempCell.Hidden = true;
+                NSLog(@"Cell hidden at %d and %d", i, j);
+            }else{
+                
+                tempCell.Hidden = false;
+            }
+            
+        }
+        
+    }
+    NSLog(@"button Clicked");
+    HitoriRules * tempRules = [[HitoriRules alloc] init];
+    tempRules.hitoriInArray = hitoriInArray;
+    //tempRules.firstRule;
+    //tempRules.secondRule;
+    tempRules.thirdRule;
+}
+
+- (IBAction)pleaseClick:(id)sender {
+    
+    NSLog(@"Please I clicked");
+}
 @end

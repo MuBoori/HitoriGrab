@@ -65,6 +65,7 @@
 		847CAA5C14FA9EB1002A9D24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847CAA5B14FA9EB1002A9D24 /* QuartzCore.framework */; };
 		847CAA661506B19B002A9D24 /* HitoriCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CAA651506B19B002A9D24 /* HitoriCell.m */; };
 		847CAA6A1506B1C9002A9D24 /* HitoriGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CAA691506B1C9002A9D24 /* HitoriGrid.m */; };
+		847CAA6D15091237002A9D24 /* HitoriRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CAA6C15091237002A9D24 /* HitoriRules.m */; };
 		8497FBEC14426AE20012373F /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8497FBEB14426AE20012373F /* test2.png */; };
 		8497FBEF1442709B0012373F /* kakuroxx.png in Resources */ = {isa = PBXBuildFile; fileRef = 8497FBEE1442709B0012373F /* kakuroxx.png */; };
 		8497FBF1144271300012373F /* KillerSudoku1790603.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8497FBF0144271300012373F /* KillerSudoku1790603.jpg */; };
@@ -72,6 +73,8 @@
 		8497FBFB144370E10012373F /* kakur2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8497FBFA144370E10012373F /* kakur2.png */; };
 		849969C01441125D004C6798 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 849969BF1441125D004C6798 /* 2.jpg */; };
 		84B521E31498061D00124881 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B521E21498061D00124881 /* empty.png */; };
+		84CB19EF150A6FF600D762DB /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB19EE150A6FF600D762DB /* NSMutableArray+QueueAdditions.m */; };
+		84CB1A0A150A8A7800D762DB /* HitoriPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1A09150A8A7800D762DB /* HitoriPoint.m */; };
 		84D1F57114422F5400E3B1C0 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56D14422F5400E3B1C0 /* test1.jpg */; };
 		84D1F57214422F5400E3B1C0 /* IMG_0629.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56E14422F5400E3B1C0 /* IMG_0629.jpg */; };
 		84D1F57314422F5400E3B1C0 /* IMG_0630.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56F14422F5400E3B1C0 /* IMG_0630.jpg */; };
@@ -213,6 +216,8 @@
 		847CAA651506B19B002A9D24 /* HitoriCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitoriCell.m; sourceTree = "<group>"; };
 		847CAA681506B1C9002A9D24 /* HitoriGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitoriGrid.h; sourceTree = "<group>"; };
 		847CAA691506B1C9002A9D24 /* HitoriGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitoriGrid.m; sourceTree = "<group>"; };
+		847CAA6B15091236002A9D24 /* HitoriRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitoriRules.h; sourceTree = "<group>"; };
+		847CAA6C15091237002A9D24 /* HitoriRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitoriRules.m; sourceTree = "<group>"; };
 		8497FBEB14426AE20012373F /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
 		8497FBEE1442709B0012373F /* kakuroxx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakuroxx.png; sourceTree = "<group>"; };
 		8497FBF0144271300012373F /* KillerSudoku1790603.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KillerSudoku1790603.jpg; sourceTree = "<group>"; };
@@ -220,6 +225,10 @@
 		8497FBFA144370E10012373F /* kakur2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakur2.png; sourceTree = "<group>"; };
 		849969BF1441125D004C6798 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		84B521E21498061D00124881 /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
+		84CB19ED150A6FF600D762DB /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
+		84CB19EE150A6FF600D762DB /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
+		84CB1A08150A8A7800D762DB /* HitoriPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitoriPoint.h; sourceTree = "<group>"; };
+		84CB1A09150A8A7800D762DB /* HitoriPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitoriPoint.m; sourceTree = "<group>"; };
 		84D1F56D14422F5400E3B1C0 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
 		84D1F56E14422F5400E3B1C0 /* IMG_0629.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0629.jpg; sourceTree = "<group>"; };
 		84D1F56F14422F5400E3B1C0 /* IMG_0630.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0630.jpg; sourceTree = "<group>"; };
@@ -479,6 +488,12 @@
 				847CAA651506B19B002A9D24 /* HitoriCell.m */,
 				847CAA681506B1C9002A9D24 /* HitoriGrid.h */,
 				847CAA691506B1C9002A9D24 /* HitoriGrid.m */,
+				847CAA6B15091236002A9D24 /* HitoriRules.h */,
+				847CAA6C15091237002A9D24 /* HitoriRules.m */,
+				84CB19ED150A6FF600D762DB /* NSMutableArray+QueueAdditions.h */,
+				84CB19EE150A6FF600D762DB /* NSMutableArray+QueueAdditions.m */,
+				84CB1A08150A8A7800D762DB /* HitoriPoint.h */,
+				84CB1A09150A8A7800D762DB /* HitoriPoint.m */,
 			);
 			name = Hitori;
 			sourceTree = "<group>";
@@ -551,7 +566,7 @@
 		0013FA1714111D0E004DC957 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Aptogo Limited";
 			};
 			buildConfigurationList = 0013FA1A14111D0E004DC957 /* Build configuration list for PBXProject "HitioriGrab" */;
@@ -647,6 +662,9 @@
 				847CAA5A14FA8D5E002A9D24 /* UIColor+AQGridView.m in Sources */,
 				847CAA661506B19B002A9D24 /* HitoriCell.m in Sources */,
 				847CAA6A1506B1C9002A9D24 /* HitoriGrid.m in Sources */,
+				847CAA6D15091237002A9D24 /* HitoriRules.m in Sources */,
+				84CB19EF150A6FF600D762DB /* NSMutableArray+QueueAdditions.m in Sources */,
+				84CB1A0A150A8A7800D762DB /* HitoriPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

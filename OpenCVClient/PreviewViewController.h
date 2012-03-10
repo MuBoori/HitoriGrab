@@ -18,6 +18,7 @@ UINavigationControllerDelegate, UIPopoverControllerDelegate>{
     UIImage *image;
     UIImage * newImage;
 
+    NSMutableArray *hitoriInArray;
     NSMutableArray *trackButton;
     
 }

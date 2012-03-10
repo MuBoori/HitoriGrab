@@ -357,6 +357,12 @@ int matrix[8][8];
                     tempCell.confidence = conf[0];
                     tempCell.Status = CELL_VISABLE;
                     tempCell.Hidden = false;
+
+                    HitoriPoint *point = [[HitoriPoint alloc]init];
+                    point.x = i;
+                    point.y =j;
+                    tempCell.location = point;
+                    
             [rows addObject:tempCell];
            // std::cout << "character is " << outer << std::endl;
 

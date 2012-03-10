@@ -10,6 +10,6 @@
 
 @implementation HitoriCell
 
-@synthesize Hidden,number,Status, confidence, NumberAsString;
+@synthesize Hidden,number,Status, confidence, NumberAsString, Mark ,location;
 
 @end

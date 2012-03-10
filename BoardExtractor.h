@@ -10,7 +10,7 @@
 //#include <vector>//;
 #include "baseapi.h"
 #import "HitoriGrid.h"
-
+#import "HitoriPoint.h"
 #include "environ.h"
 #import "pix.h"
 namespace tesseract {

@@ -85,6 +85,7 @@
     [be makeProspective];
     [be readDigit];
    
+    hitoriInArray = be.resultInArray;
     _newImage = [[UIImage alloc] initWithCVMat:be.imageFromMat];
 
     
@@ -104,6 +105,7 @@
     
     for (int i =0; 8 > i; i++) {
 
+        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
         for (int j = 0 ; 8 > j; j++) {
             UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(40*j, 50*i, 30, 30)];
             HitoriCell *tempCell = ((HitoriCell*)[[be.resultInArray objectAtIndex:i] objectAtIndex:j]);
@@ -133,14 +135,17 @@
             }
 
             [self.view addSubview:label];
-            [trackButton addObject:label];
+            [tempArray addObject:label];
 
         }
-          }     
+        [trackButton addObject:tempArray];
+        
+          } 
+    
      	
     DataAppDataObject* theDataObject = [self theAppDataObject];
     theDataObject.HitoriMatrix = be.resultInArray;
-    [be release];
+    //[be release];
      _CapturedImage.image = _newImage;
     
 }
@@ -197,7 +202,6 @@
     [self setConvertButton:nil];
     [self setResultLabel:nil];
     [self setSelectButton:nil];
-    [self setChangeNo:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -214,10 +218,17 @@
     NSLog(@"I'm clicked %@", sender.title);
 
     for (int i = 0; trackButton.count > i; i++) {
-        UIButton *tempButton = (UIButton*)[trackButton objectAtIndex:i];
+        for (int j = 0; trackButton.count > j; j++) {
+        UIButton *tempButton = (UIButton*)[[trackButton objectAtIndex:i] objectAtIndex:j];
         if(!tempButton.highlighted){
             [tempButton setTitle:sender.title forState:UIControlStateNormal];
+            HitoriCell *tempCell = [[hitoriInArray objectAtIndex:i] objectAtIndex:j];
+            tempCell.number=[sender.title intValue];
+            tempCell.NumberAsString = sender.title;
+            [[hitoriInArray objectAtIndex:i]setObject:tempCell atIndex:j];
             tempButton.highlighted = true;
+        
+        }     
         }
     }
 
@@ -227,8 +238,12 @@
 {
     
     for (int i = 0; trackButton.count > i; i++) {
-        UIButton *tempButton = (UIButton*)[trackButton objectAtIndex:i];
-        tempButton.highlighted = true;
+        for (int j = 0; trackButton.count > j; j++) {
+            
+            UIButton *tempButton = (UIButton*)[[trackButton objectAtIndex:i] objectAtIndex:j];
+            tempButton.highlighted = true;
+        }
+
        
     }
      sender.highlighted = false;
