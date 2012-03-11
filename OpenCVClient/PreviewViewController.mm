@@ -11,9 +11,10 @@
 #import "DataAppDataObject.h"
 
 @implementation PreviewViewController
-@synthesize ResultLabel;
+//@synthesize ResultLabel;
 @synthesize ConvertButton;
 @synthesize SelectButton;
+@synthesize PlayButton;
 @synthesize captureButton;
 @synthesize PreviewView;
 @synthesize PreviewViewController;
@@ -38,6 +39,9 @@
     self.imgPicker.allowsEditing = FALSE;
     self.imgPicker.delegate = self; 
     //[[[imgPicker self] setDelegate: self];
+    PlayButton.enabled = NO;
+    ConvertButton.enabled = NO;
+
 
 
     
@@ -57,8 +61,19 @@
 }
 - (IBAction)convertImage:(id)sender {
     
+    // The hud will dispable all input on the view (use the higest view possible in the view hierarchy)
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    // Regiser for HUD callbacks so we can remove it from the window at the right time
+    HUD.delegate = self;
+    
+    // Show the HUD while the provided method executes in a new thread
+    [HUD showWhileExecuting:@selector(processRawImage) onTarget:self withObject:nil animated:YES];
     NSLog(@"StartProccessing");
-    [self processRawImage];
+    
+
+    //[self processRawImage];
     NSLog(@"Finished");
 
 }
@@ -89,7 +104,7 @@
     _newImage = [[UIImage alloc] initWithCVMat:be.imageFromMat];
 
     
-    [ResultLabel setText:[be resultInString]];
+    //[ResultLabel setText:[be resultInString]];
     //NSMutableArray *myArray = [be.resultInArray objectAtIndex:0];
 
     //NSString *oneResult = [myArray objectAtIndex:0];
@@ -147,6 +162,10 @@
     theDataObject.HitoriMatrix = be.resultInArray;
     //[be release];
      _CapturedImage.image = _newImage;
+    ConvertButton.enabled = NO;
+    SelectButton.enabled = NO;
+    captureButton.enabled = NO;
+    PlayButton.enabled = YES;
     
 }
 - (IBAction)DoStuff:(id)sender {
@@ -156,13 +175,14 @@
     //self.imgPicker.cameraViewTransform = YES;
     self.imgPicker.showsCameraControls = YES;
     [self presentModalViewController:self.imgPicker animated:YES];
-
+    ConvertButton.enabled = YES;
 
 }
 - (IBAction)SelectAPicture:(id)sender {
     
     self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentModalViewController:self.imgPicker animated:YES];
+    ConvertButton.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -200,8 +220,9 @@
     [self setPreviewViewController:nil];
     [self setCapturedImage:nil];
     [self setConvertButton:nil];
-    [self setResultLabel:nil];
+    //[self setResultLabel:nil];
     [self setSelectButton:nil];
+    [self setPlayButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -273,9 +294,10 @@
     [PreviewViewController release];
     [_CapturedImage release];
     [ConvertButton release];
-    [ResultLabel release];
+    //[ResultLabel release];
     [SelectButton release];
 
+    [PlayButton release];
     [super dealloc];
 }
 @end

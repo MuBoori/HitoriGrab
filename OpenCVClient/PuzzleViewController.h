@@ -10,9 +10,11 @@
 #import "AQGridView.h"
 #import "HitoriCell.h"
 #import "HitoriRules.h"
+#import "MBProgressHUD.h"
 @interface PuzzleViewController : UIViewController <AQGridViewDataSource,AQGridViewDelegate>
 {
  
+    MBProgressHUD *HUD;
     AQGridView *_gridView;
     NSMutableArray *buttonTracker;
     NSMutableArray *hitoriInArray;

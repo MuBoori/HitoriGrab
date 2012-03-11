@@ -75,6 +75,12 @@
 		84B521E31498061D00124881 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B521E21498061D00124881 /* empty.png */; };
 		84CB19EF150A6FF600D762DB /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB19EE150A6FF600D762DB /* NSMutableArray+QueueAdditions.m */; };
 		84CB1A0A150A8A7800D762DB /* HitoriPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1A09150A8A7800D762DB /* HitoriPoint.m */; };
+		84CB1A0E150BB54900D762DB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1A0D150BB54900D762DB /* MBProgressHUD.m */; };
+		84CB1A11150C12C700D762DB /* iPhoneIcon_Medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CB1A10150C12C500D762DB /* iPhoneIcon_Medium.png */; };
+		84CB1A13150C148E00D762DB /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CB1A12150C148D00D762DB /* logo.png */; };
+		84CB1A15150C168E00D762DB /* newLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CB1A14150C168E00D762DB /* newLogo.png */; };
+		84CB1A17150C16C300D762DB /* newSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CB1A16150C16C200D762DB /* newSmall.png */; };
+		84CB1A1D150C1EA800D762DB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1A1C150C1EA800D762DB /* HelpViewController.m */; };
 		84D1F57114422F5400E3B1C0 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56D14422F5400E3B1C0 /* test1.jpg */; };
 		84D1F57214422F5400E3B1C0 /* IMG_0629.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56E14422F5400E3B1C0 /* IMG_0629.jpg */; };
 		84D1F57314422F5400E3B1C0 /* IMG_0630.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1F56F14422F5400E3B1C0 /* IMG_0630.jpg */; };
@@ -229,6 +235,14 @@
 		84CB19EE150A6FF600D762DB /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		84CB1A08150A8A7800D762DB /* HitoriPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitoriPoint.h; sourceTree = "<group>"; };
 		84CB1A09150A8A7800D762DB /* HitoriPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitoriPoint.m; sourceTree = "<group>"; };
+		84CB1A0C150BB54900D762DB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		84CB1A0D150BB54900D762DB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		84CB1A10150C12C500D762DB /* iPhoneIcon_Medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneIcon_Medium.png; sourceTree = "<group>"; };
+		84CB1A12150C148D00D762DB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		84CB1A14150C168E00D762DB /* newLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newLogo.png; sourceTree = "<group>"; };
+		84CB1A16150C16C200D762DB /* newSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newSmall.png; sourceTree = "<group>"; };
+		84CB1A1B150C1EA800D762DB /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		84CB1A1C150C1EA800D762DB /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		84D1F56D14422F5400E3B1C0 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
 		84D1F56E14422F5400E3B1C0 /* IMG_0629.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0629.jpg; sourceTree = "<group>"; };
 		84D1F56F14422F5400E3B1C0 /* IMG_0630.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0630.jpg; sourceTree = "<group>"; };
@@ -265,6 +279,11 @@
 		0013FA1514111D0E004DC957 = {
 			isa = PBXGroup;
 			children = (
+				84CB1A16150C16C200D762DB /* newSmall.png */,
+				84CB1A14150C168E00D762DB /* newLogo.png */,
+				84CB1A12150C148D00D762DB /* logo.png */,
+				84CB1A10150C12C500D762DB /* iPhoneIcon_Medium.png */,
+				84CB1A0B150BB51A00D762DB /* MBProgressHUD */,
 				847CAA3814FA8D23002A9D24 /* GridView */,
 				00FDD98E1435E549008F8ECE /* README.markdown */,
 				8431267514A3985300104BD2 /* cvBlob */,
@@ -506,6 +525,9 @@
 				8423EFE714EDB88200B389BE /* PreviewViewController.mm */,
 				840B7F4414F028C400BA1E2B /* PuzzleViewController.h */,
 				840B7F4514F028C400BA1E2B /* PuzzleViewController.m */,
+				84CB1A1B150C1EA800D762DB /* HelpViewController.h */,
+				84CB1A1C150C1EA800D762DB /* HelpViewController.m */,
+				84CB1A0F150C114A00D762DB /* Icons */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -538,6 +560,22 @@
 				847CAA5014FA8D5E002A9D24 /* UIColor+AQGridView.m */,
 			);
 			name = GridView;
+			sourceTree = "<group>";
+		};
+		84CB1A0B150BB51A00D762DB /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				84CB1A0C150BB54900D762DB /* MBProgressHUD.h */,
+				84CB1A0D150BB54900D762DB /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		84CB1A0F150C114A00D762DB /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -623,6 +661,10 @@
 				8447495914D733A700140BF7 /* Hitori4.JPG in Resources */,
 				8447495B14D734ED00140BF7 /* hitori6.png in Resources */,
 				8434A2F614ED553200D1A836 /* MainStoryboard.storyboard in Resources */,
+				84CB1A11150C12C700D762DB /* iPhoneIcon_Medium.png in Resources */,
+				84CB1A13150C148E00D762DB /* logo.png in Resources */,
+				84CB1A15150C168E00D762DB /* newLogo.png in Resources */,
+				84CB1A17150C16C300D762DB /* newSmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +707,8 @@
 				847CAA6D15091237002A9D24 /* HitoriRules.m in Sources */,
 				84CB19EF150A6FF600D762DB /* NSMutableArray+QueueAdditions.m in Sources */,
 				84CB1A0A150A8A7800D762DB /* HitoriPoint.m in Sources */,
+				84CB1A0E150BB54900D762DB /* MBProgressHUD.m in Sources */,
+				84CB1A1D150C1EA800D762DB /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

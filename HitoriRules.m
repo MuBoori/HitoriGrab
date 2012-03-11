@@ -37,7 +37,7 @@
                         
                         NSLog(@"Rule 1 is voilated at y = %d and %d",y,x);
 
-                        
+                        return false;
                     }else {
                        
                     }
@@ -68,6 +68,7 @@
                     }
                     if (!anotherTempCell.Hidden && !tempCell.Hidden && xx != x) {
                         NSLog(@"Rule 1 is voilated at y = %d and %d",y,x);
+                        return false;
 
                     }else {
                         //NSLog(@"Rule 1 is voilated at y = %d and %d",y,x);
@@ -103,6 +104,7 @@
                 HitoriCell *tempCell4 = [[hitoriInArray objectAtIndex:y-1] objectAtIndex:x];
                 if ((tempCell1.Hidden && tempCell4.Hidden) || (tempCell1.Hidden && tempCell2.Hidden)) {
                     NSLog(@"Rule 2 not good");
+                    return false;
                 }
             }
             if (x - 1 >=0 && x+1 < hitoriInArray.count) {
@@ -112,6 +114,7 @@
                 HitoriCell *tempCell3 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x+1];
                 if ((tempCell1.Hidden && tempCell3.Hidden) || (tempCell1.Hidden && tempCell5.Hidden)) {
                     NSLog(@"Rule 3");
+                    return false;
                 }
             }
         }
@@ -225,6 +228,7 @@
                     for (int y = 0; hitoriInArray.count > y; y++) {
                         if (![[[painted objectAtIndex:x] objectAtIndex:y] boolValue] && !((HitoriCell*)[[hitoriInArray objectAtIndex:x] objectAtIndex:y]).Hidden) {
                             NSLog(@"Rule3 fail");
+                            return false;
                         }
                     }
                 }

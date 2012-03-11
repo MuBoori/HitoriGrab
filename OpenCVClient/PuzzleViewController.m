@@ -231,7 +231,30 @@
     tempRules.hitoriInArray = hitoriInArray;
     //tempRules.firstRule;
     //tempRules.secondRule;
-    tempRules.thirdRule;
+
+    if (tempRules.secondRule && tempRules.thirdRule && tempRules.firstRule) {
+        // todo
+        NSLog(@"You Win");
+        
+        NSLog(@"You did not Win");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Won" 
+                                                        message:@"congratulation" 
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }else {
+
+        NSLog(@"You did not Win");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Solution is Wrong" 
+                                                        message:@"Please check agian" 
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 - (IBAction)pleaseClick:(id)sender {

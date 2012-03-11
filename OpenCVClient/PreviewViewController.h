@@ -10,9 +10,10 @@
 //#import "BoardExtractor.h"
 #import "BoardExtractor.h"
 #import "UIImage+OpenCV.h"
+#import "MBProgressHUD.h"
 @protocol UIImagePickerControllerDelegate;
 @interface PreviewViewController : UIViewController<UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIPopoverControllerDelegate>{
+UINavigationControllerDelegate, UIPopoverControllerDelegate, MBProgressHUDDelegate>{
 
     UIImagePickerController *imgPicker;
     UIImage *image;
@@ -20,11 +21,13 @@ UINavigationControllerDelegate, UIPopoverControllerDelegate>{
 
     NSMutableArray *hitoriInArray;
     NSMutableArray *trackButton;
+    MBProgressHUD *HUD;
     
 }
-@property (retain, nonatomic) IBOutlet UILabel *ResultLabel;
+//@property (retain, nonatomic) IBOutlet UILabel *ResultLabel;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *ConvertButton;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *SelectButton;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *PlayButton;
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *captureButton;
 @property (retain, nonatomic) IBOutlet UIView *PreviewView;
