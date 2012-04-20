@@ -7,15 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AQGridView.h"
 #import "HitoriCell.h"
 #import "HitoriRules.h"
 #import "MBProgressHUD.h"
-@interface PuzzleViewController : UIViewController <AQGridViewDataSource,AQGridViewDelegate>
+@interface PuzzleViewController : UIViewController 
 {
  
     MBProgressHUD *HUD;
-    AQGridView *_gridView;
     NSMutableArray *buttonTracker;
     NSMutableArray *hitoriInArray;
 }

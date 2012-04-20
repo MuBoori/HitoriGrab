@@ -84,16 +84,7 @@
     }
     
     */
-    // grid view sits on top of the background image
-    _gridView = [[AQGridView alloc] initWithFrame: self.view.bounds];
-    _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    _gridView.backgroundColor = [UIColor clearColor];
-    _gridView.opaque = NO;
-    _gridView.dataSource = self;
-    _gridView.delegate = self;
-    _gridView.scrollEnabled = NO;
-    [self.view addSubview: _gridView];
-    /////
+  
   
     NSLog(@"YESSSS");
     DataAppDataObject* theDataObject = [self theAppDataObject];
