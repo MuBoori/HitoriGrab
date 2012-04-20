@@ -28,12 +28,6 @@
 		840B7F4E14F2B0EB00BA1E2B /* DataAppDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B7F4D14F2B0EB00BA1E2B /* DataAppDataObject.m */; };
 		840B7F5114F2B16000BA1E2B /* AppDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B7F5014F2B16000BA1E2B /* AppDataObject.m */; };
 		8423EFE814EDB88300B389BE /* PreviewViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFE714EDB88200B389BE /* PreviewViewController.mm */; };
-		843126A014A3C6D300104BD2 /* cvaux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269914A3C6D300104BD2 /* cvaux.cpp */; };
-		843126A114A3C6D300104BD2 /* cvblob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269A14A3C6D300104BD2 /* cvblob.cpp */; };
-		843126A214A3C6D300104BD2 /* cvcolor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269C14A3C6D300104BD2 /* cvcolor.cpp */; };
-		843126A314A3C6D300104BD2 /* cvcontour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269D14A3C6D300104BD2 /* cvcontour.cpp */; };
-		843126A414A3C6D300104BD2 /* cvlabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269E14A3C6D300104BD2 /* cvlabel.cpp */; };
-		843126A514A3C6D300104BD2 /* cvtrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8431269F14A3C6D300104BD2 /* cvtrack.cpp */; };
 		843126D814A51A2A00104BD2 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843126D614A51A2A00104BD2 /* liblept.a */; };
 		843126D914A51A2A00104BD2 /* libtesseract_all.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843126D714A51A2A00104BD2 /* libtesseract_all.a */; };
 		843126E614A52A7B00104BD2 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 843126E514A52A7A00104BD2 /* tessdata */; };
@@ -95,13 +89,6 @@
 		840B7F5014F2B16000BA1E2B /* AppDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataObject.m; sourceTree = "<group>"; };
 		8423EFE614EDB88200B389BE /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		8423EFE714EDB88200B389BE /* PreviewViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreviewViewController.mm; sourceTree = "<group>"; };
-		8431269914A3C6D300104BD2 /* cvaux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvaux.cpp; sourceTree = "<group>"; };
-		8431269A14A3C6D300104BD2 /* cvblob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvblob.cpp; sourceTree = "<group>"; };
-		8431269B14A3C6D300104BD2 /* cvblob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvblob.h; sourceTree = "<group>"; };
-		8431269C14A3C6D300104BD2 /* cvcolor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvcolor.cpp; sourceTree = "<group>"; };
-		8431269D14A3C6D300104BD2 /* cvcontour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvcontour.cpp; sourceTree = "<group>"; };
-		8431269E14A3C6D300104BD2 /* cvlabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvlabel.cpp; sourceTree = "<group>"; };
-		8431269F14A3C6D300104BD2 /* cvtrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvtrack.cpp; sourceTree = "<group>"; };
 		843126AB14A51A2A00104BD2 /* allheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
 		843126AC14A51A2A00104BD2 /* alltypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alltypes.h; sourceTree = "<group>"; };
 		843126AD14A51A2A00104BD2 /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
@@ -214,7 +201,6 @@
 				00FDD98E1435E549008F8ECE /* README.markdown */,
 				8453C10415128D1C005D3AF9 /* plusSign.png */,
 				8453C10715129043005D3AF9 /* mask.png */,
-				8431267514A3985300104BD2 /* cvBlob */,
 				843126E514A52A7A00104BD2 /* tessdata */,
 				843126A814A51A2A00104BD2 /* dependencies */,
 				840B7F3E14EE9EB900BA1E2B /* Grid */,
@@ -304,20 +290,6 @@
 				840B7F4214EE9F0B00BA1E2B /* BoardExtractor.mm */,
 			);
 			name = Grid;
-			sourceTree = "<group>";
-		};
-		8431267514A3985300104BD2 /* cvBlob */ = {
-			isa = PBXGroup;
-			children = (
-				8431269914A3C6D300104BD2 /* cvaux.cpp */,
-				8431269A14A3C6D300104BD2 /* cvblob.cpp */,
-				8431269B14A3C6D300104BD2 /* cvblob.h */,
-				8431269C14A3C6D300104BD2 /* cvcolor.cpp */,
-				8431269D14A3C6D300104BD2 /* cvcontour.cpp */,
-				8431269E14A3C6D300104BD2 /* cvlabel.cpp */,
-				8431269F14A3C6D300104BD2 /* cvtrack.cpp */,
-			);
-			path = cvBlob;
 			sourceTree = "<group>";
 		};
 		843126A814A51A2A00104BD2 /* dependencies */ = {
@@ -542,12 +514,6 @@
 				0013FA3B14111D0F004DC957 /* OpenCVClientViewController.mm in Sources */,
 				0013FA4814111D6A004DC957 /* UIImage+OpenCV.mm in Sources */,
 				844212191455795600C13FC1 /* digitrecognizer.cpp in Sources */,
-				843126A014A3C6D300104BD2 /* cvaux.cpp in Sources */,
-				843126A114A3C6D300104BD2 /* cvblob.cpp in Sources */,
-				843126A214A3C6D300104BD2 /* cvcolor.cpp in Sources */,
-				843126A314A3C6D300104BD2 /* cvcontour.cpp in Sources */,
-				843126A414A3C6D300104BD2 /* cvlabel.cpp in Sources */,
-				843126A514A3C6D300104BD2 /* cvtrack.cpp in Sources */,
 				84478A7E14ED59070065E665 /* MainViewDelegate.m in Sources */,
 				8423EFE814EDB88300B389BE /* PreviewViewController.mm in Sources */,
 				840B7F4314EE9F0B00BA1E2B /* BoardExtractor.mm in Sources */,

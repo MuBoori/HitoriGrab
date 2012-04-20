@@ -18,7 +18,6 @@
 #import "OpenCVClientViewController.h"
 #import "digitrecognizer.h"
 
-#import "cvblob.h"
 
 #include "baseapi.h"
 
