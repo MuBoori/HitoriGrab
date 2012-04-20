@@ -236,7 +236,6 @@
         // todo
         NSLog(@"You Win");
         
-        NSLog(@"You did not Win");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Won" 
                                                         message:@"congratulation" 
                                                        delegate:nil 

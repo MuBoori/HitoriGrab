@@ -36,6 +36,7 @@
                     if (!anotherTempCell.Hidden && !tempCell.Hidden && yy != y) {
                         
                         NSLog(@"Rule 1 is voilated at y = %d and %d",y,x);
+                        NSLog(@"Rule1 %d", tempCell.number);
 
                         return false;
                     }else {
@@ -68,6 +69,7 @@
                     }
                     if (!anotherTempCell.Hidden && !tempCell.Hidden && xx != x) {
                         NSLog(@"Rule 1 is voilated at y = %d and %d",y,x);
+                        NSLog(@"Rule1 %d", tempCell.number);
                         return false;
 
                     }else {
@@ -93,30 +95,40 @@
     for (int y = 0; hitoriInArray.count > y ; y++) {
         for (int x = 0; hitoriInArray.count > x; x++) {
             HitoriCell *tempCell1 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x];
+
+            if ( (x < hitoriInArray.count -1)){
+                HitoriCell *tempCell4 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x + 1];
+                if ((tempCell1.Hidden && tempCell4.Hidden)) {
+                    NSLog(@"Rule 2 at %dd and %d, also %d",y,x, tempCell1.number);
+                    return false;
+                }
             
-
-
-
-
-            if (y - 1 >= 0 && y+1 < [[hitoriInArray objectAtIndex:0] count]) {
+            }
+            if ((y < hitoriInArray.count - 1)) {
                 HitoriCell *tempCell2 = [[hitoriInArray objectAtIndex:y+1] objectAtIndex:x];
-                            
-                HitoriCell *tempCell4 = [[hitoriInArray objectAtIndex:y-1] objectAtIndex:x];
-                if ((tempCell1.Hidden && tempCell4.Hidden) || (tempCell1.Hidden && tempCell2.Hidden)) {
-                    NSLog(@"Rule 2 not good");
+                if ((tempCell1.Hidden && tempCell2.Hidden)) {
+                     NSLog(@"Rule 2 at %dd and %d, also %d",y,x, tempCell1.number);
+                    NSLog(@"Rule 2 at %dd and %d",y,x);
                     return false;
                 }
             }
-            if (x - 1 >=0 && x+1 < hitoriInArray.count) {
-                            
-                HitoriCell *tempCell5 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x-1];
-                            
-                HitoriCell *tempCell3 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x+1];
-                if ((tempCell1.Hidden && tempCell3.Hidden) || (tempCell1.Hidden && tempCell5.Hidden)) {
-                    NSLog(@"Rule 3");
+            if ((x > hitoriInArray.count -1)) {
+                HitoriCell *tempCell3 = [[hitoriInArray objectAtIndex:y] objectAtIndex:x-1];
+                if ((tempCell1.Hidden && tempCell3.Hidden)) {
+                     NSLog(@"Rule 2 at %dd and %d, also %d",y,x, tempCell1.number);
+                    NSLog(@"Rule 2 at %d and %d",y,x);
                     return false;
                 }
             }
+            if (y > hitoriInArray.count - 1) {
+                 HitoriCell *tempCell5 = [[hitoriInArray objectAtIndex:y-1] objectAtIndex: x];
+                if ((tempCell1.Hidden && tempCell5.Hidden)) {
+                     NSLog(@"Rule 2 at %dd and %d, also %d",y,x, tempCell1.number);
+                    NSLog(@"Rule 2 at %dd and %d",y,x);
+                    return false;
+                }
+            }
+
         }
     }
     

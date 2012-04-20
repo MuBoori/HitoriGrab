@@ -7,7 +7,6 @@
 //
 
 #import "BoardExtractor.h"
-
 @implementation BoardExtractor
 
 @synthesize gridImage, rawImage;
@@ -15,13 +14,16 @@
 @synthesize resultInString = _resultInString;
 @synthesize resultInArray;
 @synthesize rows;
+@synthesize ListOfPoint = _ListOfPoint;
+@synthesize pointes4;
 int matrix[8][8];
 -(void) setMat : (Mat) matImage{
 
     gridImage = matImage;
 
 }
--(void) makeProspective{
+-(NSMutableArray*) makeProspective
+{
 
     NSLog(@"Start working on Prospactive");
     cv::Mat grayFrame, output;
@@ -37,7 +39,7 @@ int matrix[8][8];
     cv::GaussianBlur(grayFrame, grayFrame, cv::Size(11,11), 0);
     
         
-    cv::adaptiveThreshold( grayFrame, outerBox, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY, 101, 2);
+    cv::adaptiveThreshold( grayFrame, outerBox, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY, 45, 1);
     
     bitwise_not( outerBox,  outerBox);
 
@@ -91,15 +93,17 @@ int matrix[8][8];
         }
     }
     
-    gridLines = outerBox.clone();
+    //gridLines = outerBox.clone();
 
+    //UIImageWriteToSavedPhotosAlbum([[UIImage alloc] initWithCVMat:outerBox], self, 
+    //                               @selector(image:didFinishSavingWithError:contextInfo:), nil);
     cv::imshow("thresholded", outerBox);
     
     
     // Finding the line
     
     cv::vector<cv::Vec2f> lines;
-    cv::HoughLines(outerBox, lines,1, CV_PI/180, 350);
+    cv::HoughLines(outerBox, lines,1, CV_PI/180, 243);
     
     
     std::vector<cv::Vec2f>::const_iterator itx= lines.begin();
@@ -111,6 +115,8 @@ int matrix[8][8];
 
         double degree = theta*180/CV_PI;
         
+        drawLine1(lines[i], outerBox, CV_RGB(0,0,128));
+        /*
         if(((degree<=180 && degree>165) || (degree>=0 && degree<18)) && rho > 100){
             //printf("lines V angle are %f \n", theta*180/CV_PI);
             //printf("rho are %f \n", rho);
@@ -126,13 +132,15 @@ int matrix[8][8];
 
             //drawLine(lines[i], newHu, CV_RGB(0,0,128));
         }
+         */
         
     }
     
         
     mergeRelatedLines1(&lines, grayFrame); // Add this line
     
-    
+    //UIImageWriteToSavedPhotosAlbum([[UIImage alloc] initWithCVMat:outerBox], self, 
+    //                               @selector(image:didFinishSavingWithError:contextInfo:), nil);
     
     // Find extreamLine 
     // Now detect the lines on extremes
@@ -264,17 +272,65 @@ int matrix[8][8];
     src[1] = ptTopRight;        dst[1] = Point2f(maxLength-1, 0);
     src[2] = ptBottomRight;        dst[2] = Point2f(maxLength-1, maxLength-1);
     src[3] = ptBottomLeft;        dst[3] = Point2f(0, maxLength-1);
+    ListOfPoint = [[NSMutableArray alloc ] init];
+    [ListOfPoint addObject:[NSValue valueWithCGPoint:CGPointMake(src[0].x, src[0].y)]];
+    [ListOfPoint addObject:[NSValue valueWithCGPoint:CGPointMake(src[1].x, src[1].y)]];
+    [ListOfPoint addObject:[NSValue valueWithCGPoint:CGPointMake(src[2].x, src[2].y)]];
+    [ListOfPoint addObject:[NSValue valueWithCGPoint:CGPointMake(src[3].x, src[3].y)]];
     
+    printf("COool %f", src[1].x);
     cv::Mat undistorted = Mat(cv::Size(maxLength, maxLength), CV_8UC1);
     cv::warpPerspective(grayFrame, undistorted, cv::getPerspectiveTransform(src, dst), cv::Size(maxLength, maxLength));
     
-    cv::warpPerspective(gridLines, gridLines, cv::getPerspectiveTransform(src, dst), cv::Size(maxLength, maxLength));
+    //cv::warpPerspective(gridLines, gridLines, cv::getPerspectiveTransform(src, dst), cv::Size(maxLength, maxLength));
     
-    imageFromMat = undistorted;
+    //imageFromMat = undistorted;
+    
+
+    return ListOfPoint;
     
 }
 
--(void) readDigit
+-(Mat) transformMat:(Point2f[4]) points andMat:(Mat) imageInMat
+{
+        
+
+
+    CvPoint ptBottomLeft = points[3];
+    CvPoint ptTopRight = points[1];
+    CvPoint ptTopLeft = points[0];
+    CvPoint ptBottomRight = points[2];
+    
+    int maxLength = (ptBottomLeft.x-ptBottomRight.x)*(ptBottomLeft.x-ptBottomRight.x) + (ptBottomLeft.y-ptBottomRight.y)*(ptBottomLeft.y-ptBottomRight.y);
+    int temp = (ptTopRight.x-ptBottomRight.x)*(ptTopRight.x-ptBottomRight.x) + (ptTopRight.y-ptBottomRight.y)*(ptTopRight.y-ptBottomRight.y);
+    if(temp>maxLength) maxLength = temp;
+    
+    temp = (ptTopRight.x-ptTopLeft.x)*(ptTopRight.x-ptTopLeft.x) + (ptTopRight.y-ptTopLeft.y)*(ptTopRight.y-ptTopLeft.y);
+    if(temp>maxLength) maxLength = temp;
+    
+    temp = (ptBottomLeft.x-ptTopLeft.x)*(ptBottomLeft.x-ptTopLeft.x) + (ptBottomLeft.y-ptTopLeft.y)*(ptBottomLeft.y-ptTopLeft.y);
+    if(temp>maxLength) maxLength = temp;
+    
+    maxLength = sqrt((double)maxLength);
+    
+    Point2f dst[4];
+    dst[0] = Point2f(0,0);
+    dst[1] = Point2f(imageInMat.rows-1, 0);
+    dst[2] = Point2f(imageInMat.rows-1, imageInMat.cols-1);
+    dst[3] = Point2f(0, imageInMat.cols-1);
+    cv::Mat undistorted = Mat(cv::Size(maxLength, maxLength), CV_8UC1);
+    cv::warpPerspective(imageInMat, undistorted, cv::getPerspectiveTransform(points, dst), cv::Size(imageInMat.rows, imageInMat.cols));
+    
+    //cv::warpPerspective(gridLines, gridLines, cv::getPerspectiveTransform(points, dst), cv::Size(imageInMat.rows, imageInMat.rows));
+    
+    imageFromMat = undistorted.clone();
+    //gridLines = [self largestBlob:imageFromMat.clone()];
+
+    return imageFromMat;
+    
+}
+
+-(void) readDigit: (Mat) image andGrid:(cv::Mat)grid
 {
 
     
@@ -309,13 +365,23 @@ int matrix[8][8];
     
     
     
-    cv::medianBlur(imageFromMat, imageFromMat, 11);
-    cv::GaussianBlur(imageFromMat, imageFromMat, cv::Size(11,11), 0);
+    //cv::medianBlur(imageFromMat, imageFromMat, 11);
+    //cv::GaussianBlur(imageFromMat, imageFromMat, cv::Size(11,11), 0);
 
     //cv::medianBlur(imageFromMat, imageFromMat, 13);
-    adaptiveThreshold(imageFromMat, imageFromMat, 255, ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, 293, 2);
+
+
+    cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
     
-      
+    //cv::Mat tempfor = cv::Mat(image.size(), CV_8UC1);
+
+    //GaussianBlur(image, tempfor, cv::Size(3,3), 0);
+    gridLines = grid.clone();
+    imageFromMat = image.clone();
+    printf("grid w%d h%d img w%d h%d \n",gridLines.rows,gridLines.cols,imageFromMat.rows,imageFromMat.cols);
+    GaussianBlur(imageFromMat, imageFromMat, cv::Size(11,11), 0);
+    medianBlur(imageFromMat, imageFromMat, 5);
+    adaptiveThreshold(imageFromMat, imageFromMat, 255, ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, 389, 1);
     bitwise_not(gridLines, gridLines);
     
     //bitwise_and(undistortedThreshed, newHu, newHu);
@@ -325,20 +391,32 @@ int matrix[8][8];
     bitwise_not(imageFromMat, imageFromMat);
     tesseract->SetPageSegMode(tesseract::PSM_SINGLE_CHAR);
     
-    tesseract->SetImage((uchar*)imageFromMat.data, imageFromMat.size().width, imageFromMat.size().height, imageFromMat.channels(), imageFromMat.step1());
-    tesseract->Recognize(0);
+
+    int EdgeCuttingW = imageFromMat.size().width /100;
     
+    int EdgeCuttingH = imageFromMat.size().height /100;
+    printf("w%d h%d",EdgeCuttingW,EdgeCuttingH);
+    //cv::Rect roi= cv::Rect(EdgeCuttingW, EdgeCuttingW, imageFromMat.size().width - EdgeCuttingW, imageFromMat.size().height -EdgeCuttingH);
+    //cv::Mat cropped_Image = imageFromMat(roi);
+    //imageFromMat.release();
+
+    //imageFromMat = cropped_Image.clone();
+    
+    tesseract->SetImage((uchar*)imageFromMat.data, imageFromMat.size().width, imageFromMat.size().height, imageFromMat.channels(), imageFromMat.step1());
+
 
     
-    _resultInString = [ NSString stringWithUTF8String:tesseract->GetUTF8Text() ] ;
+    //_resultInString = [ NSString stringWithUTF8String:tesseract->GetUTF8Text() ] ;
     char * endSt;
     resultInArray = [[NSMutableArray alloc] initWithCapacity:8];
     HitoriCell *tempCell;
     //[resultInArray addObject:@"Hello"];
+
+
     for (int i = 0; i<8; i++) {
         rows = [[NSMutableArray alloc] initWithCapacity:8];
                 for (int j = 0; j<8; j++) {
-            
+
             tesseract->SetRectangle((imageFromMat.size().width/8)*j, (imageFromMat.size().height/8)*i, (imageFromMat.size().width/8), (imageFromMat.size().height/8));
             tesseract->Recognize(0);
                     
@@ -353,7 +431,7 @@ int matrix[8][8];
             matrix[i][j] = nSt;
             tempCell = [[HitoriCell alloc] init];
                     tempCell.number = nSt;
-                    tempCell.NumberAsString = [NSString stringWithUTF8String:tesseract->GetUTF8Text()];
+                    tempCell.NumberAsString = [NSString stringWithUTF8String:&(tesseract->GetUTF8Text()[0])];
                     tempCell.confidence = conf[0];
                     tempCell.Status = CELL_VISABLE;
                     tempCell.Hidden = false;
@@ -460,6 +538,95 @@ void mergeRelatedLines1(cv::vector<cv::Vec2f> *lines, cv::Mat &img)
     
     
     
+    
 }
+
+
+-(Mat) largestBlob: (Mat) matImage
+{
+
+    // Convert captured frame to grayscale
+    cv::cvtColor(matImage, matImage, cv::COLOR_RGB2GRAY);
+    
+    cv::Mat outerBox = cv::Mat(matImage.size(), CV_8UC1);
+    
+    
+    cv::GaussianBlur(matImage, outerBox, cv::Size(11,11), 0);
+    
+    
+    cv::adaptiveThreshold( outerBox, outerBox, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY, 83, 1);
+    
+    bitwise_not( outerBox,  outerBox);
+    
+    // Largest Blob
+    int count=0;
+    int max=-1;
+    cv::Point maxPt;
+    
+    
+    for(int y=0;y<outerBox.size().height;y++)
+    {
+        uchar *row = outerBox.ptr(y);
+        for(int x=0;x<outerBox.size().width;x++)
+        {
+            if(row[x]>=128)
+            {
+                int area = floodFill(outerBox, cv::Point(x,y), CV_RGB(0,0,64));
+                
+                if(area>max)
+                {
+                    maxPt = cv::Point(x,y);
+                    max = area;
+                }
+            }
+        }
+    }
+    
+    cv::floodFill(outerBox, maxPt, CV_RGB(255,255,255));
+    
+    // secound Pass
+    
+    int counter1 = 0; 
+    int xx =0 ;
+    int x;
+    Boolean line_test;
+    Boolean prev_test;
+    for(int y=0;y<outerBox.size().height;y++)
+    {
+        uchar *row = outerBox.ptr(y);
+        
+        for( x=0;x<outerBox.size().width;x++)
+        {
+            
+            if(row[x]==64 && x!=maxPt.x && y!=maxPt.y)
+            {
+                
+                int area = floodFill(outerBox, cv::Point(x,y), CV_RGB(0,0,0));
+                
+            }
+            
+        }
+    }
+    
+    return outerBox;
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error 
+  contextInfo:(void *)contextInfo
+{
+    // Was there an error?
+    if (error != NULL)
+    {
+        // Show error message...
+        
+    }
+    else  // No errors
+    {
+        // Show message image successfully saved
+    }
+}
+
+
+
 
 @end
