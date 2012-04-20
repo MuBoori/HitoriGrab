@@ -1,6 +1,8 @@
-Computer vision with iOS: Building an OpenCV framework
+Hitori Grab iOS app
 ------------------------------------------------------
 
-This is the source code that accompanies our [article][1] on how to build an OpenCV framework for iOS devices. The framework can be added to your projects by dragging and dropping and supports video capture using the OpenCV highgui module. 
+This is puzzle app was built for my third year project. Hitori is japanese puzzle game.  The application is able to caputre puzzle and play it on the phone. The app was released on the appStore [article][2].
 
-[1]: http://aptogo.co.uk/2011/09/opencv-framework-for-ios/
+ [article][1]
+[1]: http://malboori.com
+[2]: http://itunes.apple.com/gb/app/hitori-grab/id509884380?mt=8
