@@ -15,16 +15,16 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-               BuildableName = "HitioriGrab.app"
-               BlueprintName = "HitioriGrab"
-               ReferencedContainer = "container:HitioriGrab.xcodeproj">
+               BuildableName = "HitoriGrab.app"
+               BlueprintName = "HitoriGrab"
+               ReferencedContainer = "container:HitoriGrab.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
@@ -33,15 +33,15 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "HitioriGrab.app"
-            BlueprintName = "HitioriGrab"
-            ReferencedContainer = "container:HitioriGrab.xcodeproj">
+            BuildableName = "HitoriGrab.app"
+            BlueprintName = "HitoriGrab"
+            ReferencedContainer = "container:HitoriGrab.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "HitioriGrab.app"
-            BlueprintName = "HitioriGrab"
-            ReferencedContainer = "container:HitioriGrab.xcodeproj">
+            BuildableName = "HitoriGrab.app"
+            BlueprintName = "HitoriGrab"
+            ReferencedContainer = "container:HitoriGrab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -64,15 +64,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Distribution"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0013FA1F14111D0E004DC957"
-            BuildableName = "HitioriGrab.app"
-            BlueprintName = "HitioriGrab"
-            ReferencedContainer = "container:HitioriGrab.xcodeproj">
+            BuildableName = "HitoriGrab.app"
+            BlueprintName = "HitoriGrab"
+            ReferencedContainer = "container:HitoriGrab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -80,7 +80,8 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Distribution"
+      customArchiveName = "Hitori"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
